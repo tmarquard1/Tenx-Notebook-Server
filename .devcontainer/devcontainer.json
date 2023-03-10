@@ -16,7 +16,8 @@
 			"extensions": [
 				"GitHub.copilot",
 				"rangav.vscode-thunder-client",
-				"Vue.volar"
+				"Vue.volar",
+				"ms-azuretools.vscode-docker"
 			]
 		}
 	},
@@ -34,7 +35,7 @@
 	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip3 install -r 10X-Notebook-server/requirements.txt"
+	"postCreateCommand": "pip3 install -r requirements.txt"
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
