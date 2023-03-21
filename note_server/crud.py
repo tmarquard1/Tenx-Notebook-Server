@@ -1,7 +1,12 @@
 from sqlalchemy.orm import Session
+from logging.config import dictConfig
+import logging
+from .config import LogConfig
 
 from . import models, schemas
 
+dictConfig(LogConfig().dict())
+logger = logging.getLogger("mycoolapp")
 
 def get_user(db: Session, user_id: int):
     return db.query(models.User).filter(models.User.id == user_id).first()
@@ -28,8 +33,40 @@ def get_notes(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Note).offset(skip).limit(limit).all()
 
 
-def create_note(db: Session, note: schemas.NoteCreate):
-    db_note = models.Note(**note.dict())
+#https://stackoverflow.com/questions/73122511/flask-sqlalchemy-dict-object-has-no-attribute-sa-instance-state
+def is_pydantic(obj: object):
+    """ Checks whether an object is pydantic. """
+    return type(obj).__class__.__name__ == "ModelMetaclass"
+
+
+def parse_pydantic_schema(schema):
+    """
+        Iterates through pydantic schema and parses nested schemas
+        to a dictionary containing SQLAlchemy models.
+        Only works if nested schemas have specified the Meta.orm_model.
+    """
+    logger.debug ("Schema: " + str(schema))
+    parsed_schema = dict(schema)
+    for key, value in parsed_schema.items():
+        try:
+            if isinstance(value, list) and len(value):
+                if is_pydantic(value[0]):
+                    parsed_schema[key] = [schema.Meta.orm_model(**schema.dict()) for schema in value]
+            else:
+                if is_pydantic(value):
+                    parsed_schema[key] = value.Meta.orm_model(**value.dict())
+        except AttributeError:
+            raise AttributeError("Found nested Pydantic model but Meta.orm_model was not specified.")
+    return parsed_schema
+
+
+# I should log the note. 
+def create_note(db: Session, note: schemas.Note):
+    logger.debug("Note: " + str(note))
+    #logger.debug("Tags: " + str(tags))
+    parsed_schema = parse_pydantic_schema(note)
+    logger.debug("Parsed Schema: " + str(parsed_schema))
+    db_note = models.Note(**parsed_schema)
     db.add(db_note)
     db.commit()
     db.refresh(db_note)

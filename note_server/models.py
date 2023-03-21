@@ -1,8 +1,14 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Table
 from sqlalchemy.orm import relationship
 
 from .database import Base
 
+note_tags = Table(
+    "note_tags",
+    Base.metadata,
+    Column("note_id", ForeignKey("notes.id"), primary_key=True),
+    Column("tag_id", ForeignKey("tags.id"), primary_key=True),
+)
 
 class User(Base):
     __tablename__ = "users"
@@ -22,7 +28,17 @@ class Note(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True)
     content = Column(String)
-    #tags = Column(String)
-    #owner_id = Column(Integer, ForeignKey("users.id"))
+    # should have a many to many relationship with tags
+    tags = relationship("Tag", secondary=note_tags, back_populates="notes")
+    
 
-    #owner = relationship("User", back_populates="items")
+# create a tag model
+class Tag(Base):
+    __tablename__ = "tags"
+
+    id = Column(Integer, primary_key=True, index=True)
+    tag = Column(String, index=True)
+    # should have a many to many relationship with notes
+    notes = relationship("Note", secondary=note_tags, back_populates="tags")
+    
+

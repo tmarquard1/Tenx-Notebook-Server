@@ -1,4 +1,7 @@
 from typing import List
+from logging.config import dictConfig
+import logging
+from .config import LogConfig
 
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
@@ -11,6 +14,13 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+dictConfig(LogConfig().dict())
+logger = logging.getLogger("mycoolapp")
+
+logger.info("Dummy Info")
+logger.error("Dummy Error")
+logger.debug("Dummy Debug")
+logger.warning("Dummy Warning")
 
 # Dependency
 def get_db():
@@ -57,6 +67,14 @@ def read_notes(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 
 @app.post("/note/add", response_model=schemas.Note)
 def create_note(note: schemas.NoteCreate, db: Session = Depends(get_db)):
+    return crud.create_note(db=db, note=note)
+
+@app.post("/note/add/withtag", response_model=schemas.Note)
+def create_note(note: schemas.NoteCreate, db: Session = Depends(get_db)):
+    logger.debug("Note: " + str(note))
+    
+    #tags = note.tags
+    #note.tags = []
     return crud.create_note(db=db, note=note)
 
 # Create endpoint to return the /data/nVentoryOpenAPI.html file
