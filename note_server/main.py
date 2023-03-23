@@ -7,6 +7,8 @@ from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 from fastapi.responses import FileResponse
 
+from fastapi.middleware.cors import CORSMiddleware
+
 from . import crud, models, schemas
 from .database import SessionLocal, engine
 
@@ -14,13 +16,20 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+origins = [
+    "*",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 dictConfig(LogConfig().dict())
 logger = logging.getLogger("mycoolapp")
-
-logger.info("Dummy Info")
-logger.error("Dummy Error")
-logger.debug("Dummy Debug")
-logger.warning("Dummy Warning")
 
 # Dependency
 def get_db():
