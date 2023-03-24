@@ -38,7 +38,7 @@ def is_pydantic(obj: object):
     """ Checks whether an object is pydantic. """
     return type(obj).__class__.__name__ == "ModelMetaclass"
 
-
+# eventually I will need to better review this, and migrate it to a helper file (or something)
 def parse_pydantic_schema(schema):
     """
         Iterates through pydantic schema and parses nested schemas
@@ -60,12 +60,9 @@ def parse_pydantic_schema(schema):
     return parsed_schema
 
 
-# I should log the note. 
 def create_note(db: Session, note: schemas.Note):
-    logger.debug("Note: " + str(note))
     #logger.debug("Tags: " + str(tags))
     parsed_schema = parse_pydantic_schema(note)
-    logger.debug("Parsed Schema: " + str(parsed_schema))
     db_note = models.Note(**parsed_schema)
     db.add(db_note)
     db.commit()
