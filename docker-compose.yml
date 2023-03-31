@@ -6,7 +6,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - 44010:44010
+      - 9000:9000
     volumes: # mount a directory for the sqlite database
       - ./data:/data
   ### MySQL database

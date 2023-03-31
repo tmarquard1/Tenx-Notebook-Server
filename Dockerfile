@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 COPY ./note_server /code/note_server
 
 # uvicorn note_server.main:app --host 0.0.0.0 --port 9000
-CMD ["uvicorn", "note_server.main:app", "--host", "0.0.0.0", "--port", "44010"]
+CMD ["uvicorn", "note_server.main:app", "--host", "0.0.0.0", "--port", "9000"]
