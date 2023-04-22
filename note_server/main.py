@@ -94,3 +94,9 @@ def create_note(note: schemas.NoteCreate, db: Session = Depends(get_db)):
 @app.get("/nVentoryOpenAPI.html")
 def get_nVentoryOpenAPI():
     return FileResponse('/data/nVentoryOpenAPI.html')
+
+@app.get("/health")
+def get_health():
+    # return a 200 status code
+    
+    return {"status": "ok"}
