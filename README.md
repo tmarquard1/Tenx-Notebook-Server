@@ -56,7 +56,7 @@ You know what sucks! 3PP. It seems like once a year at least, weeks or months ha
 ## 1Password
 Oh yeah, and none of our secrets need leave 1Password. Muahahahaha. It all comes together. (I actually haven't implemented this part yet) TODO
 
-![Alt Text]([https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif](https://media.giphy.com/media/KEYEpIngcmXlHetDqz/giphy.gif))
+![All coming together](https://media.giphy.com/media/KEYEpIngcmXlHetDqz/giphy.gif)
 
 
 
