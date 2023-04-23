@@ -1,14 +1,36 @@
 version: '3.4'
+x-aws-cloudformation:
+  Resources:
+    NotebookworkerTCP80TargetGroup:
+      Type: AWS::ElasticLoadBalancingV2::TargetGroup
+      Properties:
+        HealthCheckPath: /health
+        UnhealthyThresholdCount : 10
 services:
   notebook_worker:
-    image: notebook_worker
-    build: 
-      context: ./
-      dockerfile: Dockerfile
+    image: 966729786757.dkr.ecr.us-east-1.amazonaws.com/tenx-notebook-server:latest
+    #aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 966729786757.dkr.ecr.us-east-1.amazonaws.com
+    #x-aws-pull_credentials: arn:aws:secretsmanager:us-east-1:966729786757:secret:dockerhubAccessToken-QF1MCI
+    #x-aws-pull_credentials: "arn:aws:secretsmanager:us-east-1:966729786757:secret:pullcred-XkJqp8"
+    #x-aws-policies:
+    #  - "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+    #deploy:
+    #  resources:
+    #    limits:
+    #      cpus: '0.5'
+    #      memory: 2048M
+    #command: uvicorn note_server.main:app --host 0.0.0.0 --port 80
+    
+    #build: 
+      #context: ./
+      #dockerfile: Dockerfile
+      #platform: linux/amd64
+      #docker buildx build --platform=linux/amd64 -t tmarquard/tenx-notebook-server:latest .
+      #docker push tmarquard/tenx-notebook-server:latest
     ports:
-      - 9000:9000
-    volumes: # mount a directory for the sqlite database
-      - ./data:/data
+      - 80:80
+    #volumes: # mount a directory for the sqlite database
+    #  - ./data:/data
   ### MySQL database
   #db:
   #  image: mysql:latest
