@@ -33,7 +33,7 @@ Nothing really special here. They are cool packages, but nothing new. Very compa
 Okay. So all the above is fine.. why are we on Github? We have an internal git repo
 Excellent question.... and welcome to my TED talk. 
 
-### 2. Ease of Development - Codespaces
+### 1. Ease of Development - Codespaces
 
 Ease of development? Our ec2 dev machines handle all that for us and they are great. Yup! But they can be better. How would you like to start a job and be coding with just a few clicks? Codespaces does exactly that. [DEMO]
 
@@ -41,6 +41,22 @@ This provides a few additional things.
 1. Zero trust
 2. No devops ramp-up time / user profiles
 3. Self contained and identical
+4. Containers that can be IDENTICAL to production. Prod === Dev
+
+Now, you may be thinking, "that's all great, but what about Jenkins?" I'm glad you asked!
+
+### 2. Github Actions
+
+This is essentially Githubs version of Jenkins. It has code linting, test runs... and fully CI/CD (More on this later).
+
+### 3. Dependabot
+
+You know what sucks! 3PP. It seems like once a year at least, weeks or months have to be sunk into getting these stupid libraries to upgrade and work. It would be ideal if we did it more often, maybe every couple months or so, so that it was easier, but who has the time for that! Well, a bot. That's who. Dependabot runs WEEKLY! That's right. 3PP run WEEKLY. It doesn't just upgrade. It runs dependency checks. Nothing merges unless it is ALL green. Yeah, it is freaking cool. 
+
+## 1Password
+Oh yeah, and none of our secrets need leave 1Password. Muahahahaha. It all comes together. (I actually haven't implemented this part yet) TODO
+
+![Alt Text]([https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif](https://media.giphy.com/media/KEYEpIngcmXlHetDqz/giphy.gif))
 
 
 
