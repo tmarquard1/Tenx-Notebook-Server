@@ -1,0 +1,29 @@
+name : "Deploy to AWS via Docker compose"
+on:
+  workflow_run:
+    workflows: [Build and push to ECR]
+    types:
+      - completed
+jobs:
+  DeployToAWS:
+    name: "Deploy to AWS"
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+      AWS_DEFAULT_REGION: us-east-1
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Create ECS docker context
+        run: docker context create ecs ecscontext --from-env
+      
+      - name: Use ECS context
+        run: docker context use ecscontext
+
+      - name: Give Credentials for package
+        run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 966729786757.dkr.ecr.us-east-1.amazonaws.com
+
+      - name: deploy
+        run: docker compose up
