@@ -10,9 +10,6 @@ x-aws-cloudformation:
 services:
   notebook_worker:
     image: 966729786757.dkr.ecr.us-east-1.amazonaws.com/tenx-notebook-server:latest
-    #aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 966729786757.dkr.ecr.us-east-1.amazonaws.com
-    #x-aws-pull_credentials: arn:aws:secretsmanager:us-east-1:966729786757:secret:dockerhubAccessToken-QF1MCI
-    #x-aws-pull_credentials: "arn:aws:secretsmanager:us-east-1:966729786757:secret:pullcred-XkJqp8"
     #x-aws-policies:
     #  - "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
     #deploy:
