@@ -5,6 +5,8 @@ This application is to demo a work flow that will be used for Summer 2023 intern
 
 This part needs work. SQLite was just easy to get started. Not a real solution. 
 
+![Ehh](https://media.giphy.com/media/JRhS6WoswF8FxE0g2R/giphy.gif)
+
 ## Python 3.11
 This project runs on python 3.11. This is the latest version of Python. 
 
@@ -58,14 +60,21 @@ Yeah. This. Just this. I am tired of google docs. What if our effing docs existe
 
 ![Barely Controlled Rage](https://media.giphy.com/media/TGUIq0O5s4XJSnefJ3/giphy.gif)
 
-## Docker
-I kinda skimmed over this with Codespaces
-
 ## 1Password
 Oh yeah, and none of our secrets need leave 1Password. Muahahahaha. It all comes together. (I actually haven't implemented this part yet) TODO
 
 ![All coming together](https://media.giphy.com/media/KEYEpIngcmXlHetDqz/giphy.gif)
 
+## Docker
+I kinda skimmed over this with Codespaces. But this is the KEY to it all. Containers are the glue that makes this all so flexible. And Docker understands deployment problems. With just Docker installed, I can develop exactly like I would here in codespaces. But what docker can do with compose files... Now we are getting somewhere... 
+
+## AWS 
+Let's deploy. 
+
+### Docker Compose Up
+That's it. Done. Deployed. Serverless. Scaleable. 
+
+![Mic Drop](https://media.giphy.com/media/3o7qDSOvfaCO9b3MlO/giphy.gif)
 
 
 
