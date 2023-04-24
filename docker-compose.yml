@@ -1,6 +1,7 @@
 version: '3.4'
 x-aws-cloudformation:
   Resources:
+  # The default health check path is /, but we want to use /health
     NotebookworkerTCP80TargetGroup:
       Type: AWS::ElasticLoadBalancingV2::TargetGroup
       Properties:
