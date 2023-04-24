@@ -36,5 +36,5 @@ jobs:
         run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 966729786757.dkr.ecr.us-east-1.amazonaws.com
 
       # Commenting out for now
-      #- name: deploy
-      #  run: docker compose up
+      - name: deploy
+        run: docker compose up
