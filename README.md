@@ -56,7 +56,7 @@ This is essentially Githubs version of Jenkins. It has code linting, test runs..
 You know what sucks! 3PP. It seems like once a year at least, weeks or months have to be sunk into getting these stupid libraries to upgrade and work. It would be ideal if we did it more often, maybe every couple months or so, so that it was easier, but who has the time for that! Well, a bot. That's who. Dependabot runs WEEKLY! That's right. 3PP run WEEKLY. It doesn't just upgrade. It runs dependency checks. Nothing merges unless it is ALL green. Yeah, it is freaking cool. 
 
 ### 4. This. 
-Yeah. This. Just this. I am tired of google docs. What if our effing docs existed WITH THE EFFING CODE!! There is a whole goddamn WIKI 5 tabs over! It is all freaking here! Nothing is lost. No searching for relevant docs. This repo is the end all be all of EVERYTHING. The buck stops here! 
+Yeah. This. Just this. I am tired of google docs. What if our docs existed WITH THE CODE!! There is a whole WIKI just 5 tabs over! It is all here! Nothing is lost. No searching for relevant docs. This repo is the end all be all of EVERYTHING. The buck stops here! 
 
 ![Barely Controlled Rage](https://media.giphy.com/media/TGUIq0O5s4XJSnefJ3/giphy.gif)
 
