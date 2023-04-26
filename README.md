@@ -61,7 +61,9 @@ Yeah. This. Just this. I am tired of google docs. What if our docs existed WITH 
 ![Barely Controlled Rage](https://media.giphy.com/media/TGUIq0O5s4XJSnefJ3/giphy.gif)
 
 ## 1Password
-Oh yeah, and none of our secrets need leave 1Password. Muahahahaha. It all comes together. (I actually haven't implemented this part yet) TODO
+Oh yeah, and none of our secrets need leave 1Password. Muahahahaha. It all comes together. 
+
+Using the new BETA feature "Service Accounts" in 1password, we can create an 1password access token that allows for secret retrieval from selected vaults. Infrastructure secrets can stay in 1password and be easily rotated in one place. 
 
 ![All coming together](https://media.giphy.com/media/KEYEpIngcmXlHetDqz/giphy.gif)
 
