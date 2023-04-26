@@ -100,3 +100,9 @@ def get_health():
     # return a 200 status code
     
     return {"status": "ok"}
+
+# Get the version of the API
+@app.get("/version")
+def get_version():
+    # return a 200 status code
+    return {"version": "0.0.1"}
