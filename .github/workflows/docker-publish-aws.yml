@@ -2,7 +2,7 @@ name: "Build and push to ECR"
 on:
   push:
     branches:
-    - main
+    - temp
   pull_request:
 jobs:
   BuildAndPushImageToECR:
